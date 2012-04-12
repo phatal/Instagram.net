@@ -15,7 +15,7 @@ namespace Instagram.api
 
         public Configuration Configuration {
             get { return _sharedConfiguration; }
-            set { _sharedConfiguration = value; } 
+            set { _sharedConfiguration = value; }
         }
         private InstagramApiWrapper() {
         }
@@ -147,7 +147,7 @@ namespace Instagram.api
             string url = Configuration.ApiBaseUrl + "users/" + userid + "/media/recent?access_token=" + accessToken;
             if (string.IsNullOrEmpty(accessToken))
                 url = Configuration.ApiBaseUrl + "users/" + userid + "/media/recent?client_id=" + Configuration.ClientId;
-            
+
             if (!string.IsNullOrEmpty(min_id)) url = url + "&min_id=" + min_id;
             if (!string.IsNullOrEmpty(max_id)) url = url + "&max_id=" + max_id;
             if (!string.IsNullOrEmpty(count)) url = url + "&count=" + count;
@@ -241,11 +241,11 @@ namespace Instagram.api
 
             if (!string.IsNullOrEmpty(max_user_id)) url = url + "&cursor=" + max_user_id;
 
-            //if(_cache!=null) 
+            //if(_cache!=null)
             //    if (_cache.Exists(userid + "/follows"))
             //        return _cache.Get<InstagramResponse<User[]>>(userid + "/follows");
 
-            string json = RequestGetToUrl(url, Configuration.Proxy); 
+            string json = RequestGetToUrl(url, Configuration.Proxy);
             if (string.IsNullOrEmpty(json))
                 return null;
 
@@ -292,7 +292,7 @@ namespace Instagram.api
 
             InstagramResponse<User[]> res = DeserializeObject<InstagramResponse<User[]>>(json);
 
-   
+
 
             return res;
         }
@@ -315,7 +315,7 @@ namespace Instagram.api
         {
             string url = Configuration.ApiBaseUrl + "users/self/requested-by?access_token=" + accessToken;
 
-     
+
 
             string json = RequestGetToUrl(url, Configuration.Proxy);
             if (string.IsNullOrEmpty(json))
@@ -323,7 +323,7 @@ namespace Instagram.api
 
             InstagramResponse<User[]> res = DeserializeObject<InstagramResponse<User[]>>(json);
 
-       
+
 
             return res;
         }
@@ -434,7 +434,7 @@ namespace Instagram.api
 
         public bool CurrentUserIsFollowing( string recipient_userid, string accessToken)
         {
-            //outgoing_status: Your relationship to the user: "follows", "requested", "none". 
+            //outgoing_status: Your relationship to the user: "follows", "requested", "none".
             //incoming_status: A user's relationship to you : "followed_by", "requested_by", "blocked_by_you", "none".
             Relation r = CurrentUserRelationshipWith(recipient_userid, accessToken).data;
             if (r.outgoing_status == "follows")
@@ -443,7 +443,7 @@ namespace Instagram.api
         }
         public bool CurrentUserIsFollowedBy( string recipient_userid, string accessToken)
         {
-            //outgoing_status: Your relationship to the user: "follows", "requested", "none". 
+            //outgoing_status: Your relationship to the user: "follows", "requested", "none".
             //incoming_status: A user's relationship to you : "followed_by", "requested_by", "blocked_by_you", "none".
             Relation r = CurrentUserRelationshipWith(recipient_userid, accessToken).data;
             if (r.incoming_status == "followed_by")
@@ -470,7 +470,7 @@ namespace Instagram.api
             InstagramResponse<InstagramMedia> res = DeserializeObject<InstagramResponse<InstagramMedia>>(json);
             if (_cache != null)
                 _cache.Add("media/" + mediaid, res, 60);
-            
+
             return res;
         }
         public InstagramResponse<InstagramMedia[]> MediaSearch(string lat, string lng, string distance, string min_timestamp, string max_timestamp, string accessToken)
@@ -500,7 +500,7 @@ namespace Instagram.api
 
             if (_cache != null)
                 _cache.Add(url, res, 60);
-            
+
             return res;
         }
         public InstagramResponse<InstagramMedia[]> MediaPopular(string accessToken, bool usecache)
@@ -578,7 +578,7 @@ namespace Instagram.api
                 _cache.Remove("media/" + mediaid);
 
             return res.meta.code == "200";
-        } 
+        }
         #endregion
 
         #region likes
@@ -676,13 +676,13 @@ namespace Instagram.api
                 return LikeDelete(mediaid, userid, accessToken);
             else
                 return LikeAdd(mediaid, userid, accessToken);
-            
+
         }
         public bool UserIsLiking(string mediaid, string userid, string accessToken)
         {
 
             User[] userlinking = Likes(mediaid, accessToken).data;
-            foreach(User user in userlinking) 
+            foreach(User user in userlinking)
                 if (user.id.ToString().Equals( userid))
                     return true;
 
@@ -763,7 +763,7 @@ namespace Instagram.api
 
             if (_cache != null)
                 _cache.Add(url, res, 300);
-            
+
             return res;
         }
         public static Tag[] TagsInMediaList(InstagramMedia[] media) {
@@ -812,7 +812,7 @@ namespace Instagram.api
             string url = Configuration.ApiBaseUrl + "locations/" + locationid + "/media/recent?access_token=" + accessToken;
             if (string.IsNullOrEmpty(accessToken))
                 url = Configuration.ApiBaseUrl + "locations/" + locationid + "/media/recent?client_id=" + Configuration.ClientId;
-            
+
             if (!string.IsNullOrEmpty(min_id)) url = url + "&min_id=" + min_id;
             if (!string.IsNullOrEmpty(max_id)) url = url + "&max_id=" + max_id;
             if (!string.IsNullOrEmpty(min_timestamp)) url = url + "&min_timestamp=" + min_timestamp;
@@ -864,6 +864,6 @@ namespace Instagram.api
 
 
 
-        
+
     }
 }
