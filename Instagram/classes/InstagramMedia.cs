@@ -1,4 +1,6 @@
 ﻿using System;
+using Instagram.api.Utils;
+using Newtonsoft.Json;
 
 namespace Instagram.api.classes
 {
@@ -12,7 +14,11 @@ namespace Instagram.api.classes
         public LikesList likes;
         public string link;
         public User user;
-        public double created_time;
+
+        [JsonProperty(PropertyName = "created_time")]
+        [JsonConverter(typeof(InstagramDateConverter))]
+        public DateTime CreatedTime { get; set; }
+
         public ImagesList images;
         public string type;
         public string filter;
