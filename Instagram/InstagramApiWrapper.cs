@@ -862,8 +862,21 @@ namespace Instagram.api
         }
         #endregion
 
+        #region OEmbed
 
+        public Embed EmbedDetails(string url)
+        {
+            var embedUrl = Configuration.OEmbedUrl + "?url=" + url;
 
+            var json = RequestGetToUrl(embedUrl, Configuration.Proxy);
+            if (string.IsNullOrEmpty(json))
+                return null;
+
+            var res = DeserializeObject<Embed>(json);
+            return res;
+        }
+
+        #endregion
 
     }
 }

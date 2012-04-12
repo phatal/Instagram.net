@@ -11,6 +11,7 @@ namespace Instagram.api
         public string ReturnUrl { get; set; }
         public string TokenRetrievalUrl { get; set; }
         public string ApiBaseUrl { get; set; }
+        public string OEmbedUrl { get; set; }
         public string WebProxy { get; set; }
 
         public WebProxy Proxy {
@@ -27,7 +28,7 @@ namespace Instagram.api
         public Configuration() {
         }
 
-        public Configuration(string authurl,string clientid,string clientsecret, string returnurl, string tokenretrievalurl,string apibaseurl, string webconfig) {
+        public Configuration(string authurl,string clientid,string clientsecret, string returnurl, string tokenretrievalurl,string apibaseurl, string webconfig, string oembedUrl) {
             AuthUrl = authurl;
             ClientId =clientid;
             ClientSecret=clientsecret;
@@ -35,6 +36,7 @@ namespace Instagram.api
             TokenRetrievalUrl=tokenretrievalurl;
             ApiBaseUrl=apibaseurl;
             WebProxy = webconfig;
+            OEmbedUrl = oembedUrl;
         }
     }
 }

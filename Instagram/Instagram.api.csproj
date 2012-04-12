@@ -72,6 +72,7 @@
     <Compile Include="classes\Caption.cs" />
     <Compile Include="classes\Comment.cs" />
     <Compile Include="classes\CommentList.cs" />
+    <Compile Include="classes\Embed.cs" />
     <Compile Include="classes\ImageLink.cs" />
     <Compile Include="classes\ImagesList.cs" />
     <Compile Include="classes\Pagination.cs" />
