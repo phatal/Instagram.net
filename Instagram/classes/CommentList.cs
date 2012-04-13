@@ -1,10 +1,21 @@
-﻿using System;
+﻿/**
+ * Instagram.net
+ * https://github.com/powerinbox/Instagram.net
+ *
+ * based on .NET-Instagram-API-Wrapper
+ * Copyright (c) 2011 Diego Trin­cia­relli
+ *
+ * Additions are:
+ * Copyright (c) 2012 IO Revolution Inc.
+ */
 
-namespace Instagram.api.classes{
-    [Serializable]
-    public class CommentList : InstagramBaseObject
-    {
-        public int count;
-        public Comment[] data;
-    }
+using System;
+
+namespace Instagram.Api.Classes{
+	[Serializable]
+	public class CommentList : InstagramBaseObject
+	{
+		public int count;
+		public Comment[] data;
+	}
 }

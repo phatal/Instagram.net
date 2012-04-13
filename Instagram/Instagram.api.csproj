@@ -8,8 +8,8 @@
     <ProjectGuid>{3E3D253F-3EDB-4676-B445-8411E6277DF9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Instagram.api</RootNamespace>
-    <AssemblyName>Instagram.api</AssemblyName>
+    <RootNamespace>Instagram.Api</RootNamespace>
+    <AssemblyName>Instagram.Api</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
@@ -53,7 +53,9 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=4.0.5.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\externals\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -69,25 +71,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="classes\AccessToken.cs" />
-    <Compile Include="classes\Caption.cs" />
-    <Compile Include="classes\Comment.cs" />
-    <Compile Include="classes\CommentList.cs" />
-    <Compile Include="classes\Embed.cs" />
-    <Compile Include="classes\ImageLink.cs" />
-    <Compile Include="classes\ImagesList.cs" />
-    <Compile Include="classes\Pagination.cs" />
+    <Compile Include="Base.cs" />
+    <Compile Include="Classes\AccessToken.cs" />
+    <Compile Include="Classes\Caption.cs" />
+    <Compile Include="Classes\Comment.cs" />
+    <Compile Include="Classes\CommentList.cs" />
+    <Compile Include="Classes\Embed.cs" />
+    <Compile Include="Classes\ImageLink.cs" />
+    <Compile Include="Classes\ImagesList.cs" />
+    <Compile Include="Classes\Pagination.cs" />
     <Compile Include="Configuration.cs" />
-    <Compile Include="classes\BaseObject.cs" />
-    <Compile Include="classes\LikesList.cs" />
-    <Compile Include="classes\InstagramMedia.cs" />
-    <Compile Include="classes\Counts.cs" />
-    <Compile Include="classes\InstagramResponse.cs" />
-    <Compile Include="classes\Location.cs" />
-    <Compile Include="classes\Metadata.cs" />
-    <Compile Include="classes\Relation.cs" />
-    <Compile Include="classes\Tag.cs" />
-    <Compile Include="classes\User.cs" />
+    <Compile Include="Classes\BaseObject.cs" />
+    <Compile Include="Classes\LikesList.cs" />
+    <Compile Include="Classes\InstagramMedia.cs" />
+    <Compile Include="Classes\Counts.cs" />
+    <Compile Include="Classes\InstagramResponse.cs" />
+    <Compile Include="Classes\Location.cs" />
+    <Compile Include="Classes\Metadata.cs" />
+    <Compile Include="Classes\Relation.cs" />
+    <Compile Include="Classes\Tag.cs" />
+    <Compile Include="Classes\User.cs" />
+    <Compile Include="ICache.cs" />
     <Compile Include="InstagramApiWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\InstagramDateConverter.cs" />
@@ -108,12 +112,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ApiBase\Base.api.csproj">
-      <Project>{829CCBB7-5CEC-4B49-B99D-A677E0107CA8}</Project>
-      <Name>Base.api</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

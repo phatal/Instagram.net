@@ -1,10 +1,21 @@
-﻿using System;
+﻿/**
+ * Instagram.net
+ * https://github.com/powerinbox/Instagram.net
+ *
+ * based on .NET-Instagram-API-Wrapper
+ * Copyright (c) 2011 Diego Trin­cia­relli
+ *
+ * Additions are:
+ * Copyright (c) 2012 IO Revolution Inc.
+ */
 
-namespace Instagram.api.classes{
-    [Serializable]
-    public class Pagination : InstagramBaseObject {
-        public string next_url;
-        public string next_max_id;
-        public string next_max_like_id;
-    }
+using System;
+
+namespace Instagram.Api.Classes{
+	[Serializable]
+	public class Pagination : InstagramBaseObject {
+		public string next_url;
+		public string next_max_id;
+		public string next_max_like_id;
+	}
 }
