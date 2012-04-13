@@ -10,14 +10,24 @@
  */
 
 using System;
+using Instagram.Api.Utils;
+using Newtonsoft.Json;
 
 namespace Instagram.Api.Classes {
 	[Serializable]
 	public class Caption : InstagramBaseObject
 	{
-		public double created_time;
-		public string text;
-		public string id;
-		public User from;
+		[JsonProperty(PropertyName = "id")]
+		public string Id { get; set; }
+
+		[JsonProperty(PropertyName = "created_time")]
+		[JsonConverter(typeof (InstagramDateConverter))]
+		public DateTime CreatedTime { get; set; }
+
+		[JsonProperty(PropertyName = "text")]
+		public string Text { get; set; }
+
+		[JsonProperty(PropertyName = "from")]
+		public User From { get; set; }
 	}
 }

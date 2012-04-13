@@ -10,13 +10,19 @@
  */
 
 using System;
+using Newtonsoft.Json;
 
 namespace Instagram.Api.Classes{
 	[Serializable]
 	public class ImagesList : InstagramBaseObject
 	{
-		public ImageLink low_resolution;
-		public ImageLink thumbnail;
-		public ImageLink standard_resolution;
+		[JsonProperty(PropertyName = "low_resolution")]
+		public ImageLink LowResolution { get; set; }
+
+		[JsonProperty(PropertyName = "thumbnail")]
+		public ImageLink Thumbnail { get; set; }
+
+		[JsonProperty(PropertyName = "standard_resolution")]
+		public ImageLink StandardResolution { get; set; }
 	}
 }

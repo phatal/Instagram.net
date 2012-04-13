@@ -10,28 +10,51 @@
  */
 
 using System;
+using Newtonsoft.Json;
 
 namespace Instagram.Api.Classes
 {
 	[Serializable]
 	public class User : InstagramBaseObject, IEquatable<User>
 	{
-		public string id;
-		public string username;
-		public string full_name;
-		public string profile_picture;
+		[JsonProperty(PropertyName = "id")]
+		public string Id { get; set; }
 
-		public string first_name;
-		public string last_name;
-		public string bio;
-		public string website;
-		public string type;
+		[JsonProperty(PropertyName = "username")]
+		public string Username { get; set; }
 
-		public Counts counts;
+		[JsonProperty(PropertyName = "full_name")]
+		public string FullName { get; set; }
 
-		public bool isFollowing;
-		public bool isFollowed;
-		public bool isSelf;
+		[JsonProperty(PropertyName = "profile_picture")]
+		public string ProfilePicture { get; set; }
+
+		[JsonProperty(PropertyName = "first_name")]
+		public string FirstName { get; set; }
+
+		[JsonProperty(PropertyName = "last_name")]
+		public string LastName { get; set; }
+
+		[JsonProperty(PropertyName = "bio")]
+		public string Bio { get; set; }
+
+		[JsonProperty(PropertyName = "website")]
+		public string Website { get; set; }
+
+		[JsonProperty(PropertyName = "type")]
+		public string Type { get; set; }
+
+		[JsonProperty(PropertyName = "counts")]
+		public Counts Counts { get; set; }
+
+		[JsonProperty(PropertyName = "isFollowing")]
+		public bool IsFollowing { get; set; }
+
+		[JsonProperty(PropertyName = "isFollowed")]
+		public bool IsFollowed { get; set; }
+
+		[JsonProperty(PropertyName = "isSelf")]
+		public bool IsSelf { get; set; }
 
 		public bool Equals(User other)
 		{
@@ -41,7 +64,7 @@ namespace Instagram.Api.Classes
 			if (ReferenceEquals(this, other))
 				return true;
 
-			return id.Equals(other.id);
+			return Id.Equals(other.Id);
 		}
 
 		public override bool Equals(object obj)
@@ -52,12 +75,12 @@ namespace Instagram.Api.Classes
 			if (ReferenceEquals(this, obj))
 				return true;
 
-			return obj is User && id.Equals(((User) obj).id);
+			return obj is User && Id.Equals(((User)obj).Id);
 		}
 
 		public override int GetHashCode()
 		{
-			var hashProductName = id == null ? 0 : int.Parse(id);
+			var hashProductName = Id == null ? 0 : int.Parse(Id);
 			return hashProductName;
 		}
 	}

@@ -10,12 +10,16 @@
  */
 
 using System;
+using Newtonsoft.Json;
 
 namespace Instagram.Api.Classes{
 	[Serializable]
 	public class CommentList : InstagramBaseObject
 	{
-		public int count;
-		public Comment[] data;
+		[JsonProperty(PropertyName = "count")]
+		public int Count { get; set; }
+
+		[JsonProperty(PropertyName = "data")]
+		public Comment[] Data { get; set; }
 	}
 }

@@ -10,13 +10,20 @@
  */
 
 using System;
+using Newtonsoft.Json;
 
 namespace Instagram.Api.Classes
 {
 	[Serializable]
 	public class InstagramResponse<T> {
-		public Pagination pagination;
-		public Metadata meta;
-		public T data;
+
+		[JsonProperty(PropertyName = "pagination")]
+		public Pagination Pagination { get; set; }
+
+		[JsonProperty(PropertyName = "meta")]
+		public Metadata Meta { get; set; }
+
+		[JsonProperty(PropertyName = "data")]
+		public T Data { get; set; }
 	}
 }

@@ -19,24 +19,44 @@ namespace Instagram.Api.Classes
 	[Serializable]
 	public class InstagramMedia : InstagramBaseObject
 	{
+		[JsonProperty(PropertyName = "comments")]
+		public CommentList Comments { get; set; }
 
-		public CommentList comments;
-		public Caption caption;
-		public LikesList likes;
-		public string link;
-		public User user;
+		[JsonProperty(PropertyName = "caption")]
+		public Caption Caption { get; set; }
+
+		[JsonProperty(PropertyName = "likes")]
+		public LikesList Likes { get; set; }
+
+		[JsonProperty(PropertyName = "link")]
+		public string Link { get; set; }
+
+		[JsonProperty(PropertyName = "user")]
+		public User User;
 
 		[JsonProperty(PropertyName = "created_time")]
 		[JsonConverter(typeof(InstagramDateConverter))]
 		public DateTime CreatedTime { get; set; }
 
-		public ImagesList images;
-		public string type;
-		public string filter;
-		public string[] tags;
-		public string id;
-		public Location location;
-		public bool user_has_liked;
+		[JsonProperty(PropertyName = "images")]
+		public ImagesList Images { get; set; }
 
+		[JsonProperty(PropertyName = "type")]
+		public string Type { get; set; }
+
+		[JsonProperty(PropertyName = "filter")]
+		public string Filter { get; set; }
+
+		[JsonProperty(PropertyName = "tags")]
+		public string[] Tags { get; set; }
+
+		[JsonProperty(PropertyName = "id")]
+		public string Id { get; set; }
+
+		[JsonProperty(PropertyName = "location")]
+		public Location Location { get; set; }
+
+		[JsonProperty(PropertyName = "user_has_liked")]
+		public bool UserHasLiked { get; set; }
 	}
 }

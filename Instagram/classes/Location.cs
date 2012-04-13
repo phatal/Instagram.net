@@ -10,16 +10,24 @@
  */
 
 using System;
+using Newtonsoft.Json;
 
 namespace Instagram.Api.Classes
 {
 	[Serializable]
 	public class Location : InstagramBaseObject
 	{
-		public string id;
-		public double latitude;
-		public double longitude;
-		public string name;
+		[JsonProperty(PropertyName = "id")]
+		public string Id { get; set; }
+
+		[JsonProperty(PropertyName = "latitude")]
+		public double Latitude { get; set; }
+
+		[JsonProperty(PropertyName = "longitude")]
+		public double Longitude { get; set; }
+
+		[JsonProperty(PropertyName = "name")]
+		public string Name { get; set; }
 
 	}
 }

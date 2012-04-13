@@ -10,12 +10,19 @@
  */
 
 using System;
+using Newtonsoft.Json;
 
 namespace Instagram.Api.Classes{
 	[Serializable]
 	public class Pagination : InstagramBaseObject {
-		public string next_url;
-		public string next_max_id;
-		public string next_max_like_id;
+
+		[JsonProperty(PropertyName = "next_url")]
+		public string NextUrl { get; set; }
+
+		[JsonProperty(PropertyName = "next_max_id")]
+		public string NextMaxId { get; set; }
+
+		[JsonProperty(PropertyName = "next_max_like_id")]
+		public string NextMaxLikeId { get; set; }
 	}
 }

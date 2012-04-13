@@ -10,12 +10,16 @@
  */
 
 using System;
+using Newtonsoft.Json;
 
 namespace Instagram.Api.Classes{
 	[Serializable]
 	public class Tag : InstagramBaseObject
 	{
-		public string name;
-		public int media_count;
+		[JsonProperty(PropertyName = "name")]
+		public string Name { get; set; }
+
+		[JsonProperty(PropertyName = "media_count")]
+		public int MediaCount { get; set; }
 	}
 }

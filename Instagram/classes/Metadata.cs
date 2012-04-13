@@ -10,11 +10,13 @@
  */
 
 using System;
+using Newtonsoft.Json;
 
 namespace Instagram.Api.Classes{
 	[Serializable]
 	public class Metadata : InstagramBaseObject
 	{
-		public string code;
+		[JsonProperty(PropertyName = "code")]
+		public string Code { get; set; }
 	}
 }

@@ -10,14 +10,18 @@
  */
 
 using System;
+using Newtonsoft.Json;
 
 namespace Instagram.Api.Classes
 {
 	[Serializable]
 	public class AccessToken : InstagramBaseObject
 	{
-		public string access_token;
-		public User user;
+		[JsonProperty(PropertyName = "access_token")]
+		public string Token { get; set; }
+
+		[JsonProperty(PropertyName = "user")]
+		public User User { get; set; }
 
 		public AccessToken()
 		{
@@ -25,8 +29,8 @@ namespace Instagram.Api.Classes
 
 		public AccessToken(string json) {
 			var tk = Deserialize(json);
-			access_token = tk.access_token;
-			user = tk.user;
+			Token = tk.Token;
+			User = tk.User;
 		}
 
 		public string GetJson() {

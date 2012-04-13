@@ -10,15 +10,20 @@
  */
 
 using System;
+using Newtonsoft.Json;
 
 namespace Instagram.Api.Classes
 {
 	[Serializable]
 	public class Counts : InstagramBaseObject
 	{
-		public int media;
-		public int follows;
-		public int followed_by;
+		[JsonProperty(PropertyName = "media")]
+		public int Media { get; set; }
 
+		[JsonProperty(PropertyName = "follows")]
+		public int Follows { get; set; }
+
+		[JsonProperty(PropertyName = "followed_by")]
+		public int FollowedBy { get; set; }
 	}
 }

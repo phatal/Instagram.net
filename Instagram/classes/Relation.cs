@@ -10,12 +10,16 @@
  */
 
 using System;
+using Newtonsoft.Json;
 
 namespace Instagram.Api.Classes{
 	[Serializable]
 	public class Relation : InstagramBaseObject
 	{
-		public string outgoing_status;
-		public string incoming_status;
+		[JsonProperty(PropertyName = "outgoing_status")]
+		public string OutgoingStatus { get; set; }
+
+		[JsonProperty(PropertyName = "incoming_status")]
+		public string IncomingStatus { get; set; }
 	}
 }
