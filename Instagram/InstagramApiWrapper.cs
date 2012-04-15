@@ -549,7 +549,7 @@ namespace Instagram.Api
 				CommentAdd(mediaid, text,accessToken);
 		}
 
-		public bool CommentAdd(string mediaid, string text, string accessToken)
+		public Comment CommentAdd(string mediaid, string text, string accessToken)
 		{
 			var url = Configuration.ApiBaseUrl + "media/" + mediaid + "/comments?access_token=" + accessToken;
 			var post = new NameValueCollection
@@ -559,14 +559,17 @@ namespace Instagram.Api
 						};
 			var json = RequestPostToUrl(url, post, Configuration.Proxy);
 			if (string.IsNullOrEmpty(json))
-				return true;
+				return null;
 
 			var res = DeserializeObject<InstagramResponse<Comment>>(json);
 
 			if (_cache != null)
 				_cache.Remove("media/" + mediaid);
 
-			return res.Meta.Code == "200";
+			if (res.Meta.Code != "200")
+				return null;
+
+			return res.Data;
 		}
 
 		public bool CommentDelete(string mediaid, string commentid, string accessToken)
