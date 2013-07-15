@@ -40,6 +40,9 @@ namespace Instagram.Api.Classes
 
 		[JsonProperty(PropertyName = "images")]
 		public ImagesList Images { get; set; }
+		
+		[JsonProperty(PropertyName = "videos")]
+		public VideosList Videos { get; set; }
 
 		[JsonProperty(PropertyName = "type")]
 		public string Type { get; set; }
