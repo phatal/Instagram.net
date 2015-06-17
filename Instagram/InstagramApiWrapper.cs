@@ -456,24 +456,28 @@ namespace Instagram.Api
 
 		#region Media
 
-		public InstagramResponse<InstagramMedia> MediaDetails(string mediaid, string accessToken)
+		public InstagramResponse<InstagramMedia> MediaDetails(string mediaid, string accessToken, bool shortcode = false)
 		{
-			var url = Configuration.ApiBaseUrl + "media/" + mediaid + "?access_token=" + accessToken;
+			string mediaPrefix = "media/";
+			if(shortcode)
+				mediaPrefix += "shortcode/";
+			
+			string url = Configuration.ApiBaseUrl + mediaPrefix + mediaid + "?access_token=" + accessToken;
 			if (string.IsNullOrEmpty(accessToken))
-				url = Configuration.ApiBaseUrl + "media/" + mediaid + "?client_id=" + Configuration.ClientId;
-
+				url = Configuration.ApiBaseUrl + mediaPrefix + mediaid + "?client_id=" + Configuration.ClientId;
+			
 			if (_cache != null)
-				if (_cache.Exists("media/" + mediaid))
-					return _cache.Get<InstagramResponse<InstagramMedia>>("media/" + mediaid);
-
-			var json = RequestGetToUrl(url, Configuration.Proxy);
+				if (_cache.Exists(mediaPrefix + mediaid))
+					return _cache.Get<InstagramResponse<InstagramMedia>>(mediaPrefix + mediaid);
+			
+			string json = RequestGetToUrl(url, Configuration.Proxy);
 			if (string.IsNullOrEmpty(json))
 				return null;
-
-			var res = DeserializeObject<InstagramResponse<InstagramMedia>>(json);
+			
+			InstagramResponse<InstagramMedia> res = DeserializeObject<InstagramResponse<InstagramMedia>>(json);
 			if (_cache != null)
-				_cache.Add("media/" + mediaid, res, 60);
-
+				_cache.Add(mediaPrefix + mediaid, res, 60);
+			
 			return res;
 		}
 
